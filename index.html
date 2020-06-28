@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-28 12:23:48 / 修改时间：12:30:22" itemprop="dateCreated datePublished" datetime="2020-06-28T12:23:48+08:00">2020-06-28</time>
+              <time title="创建时间：2020-06-28 12:23:48 / 修改时间：15:56:58" itemprop="dateCreated datePublished" datetime="2020-06-28T12:23:48+08:00">2020-06-28</time>
             </span>
 
           
@@ -184,12 +184,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>###矩阵LU分解</p>
-<p>什么是$LU$分解</p>
-<p>####矩阵$L^TDL$分解</p>
-<p>$$Q=L^TDL$$</p>
+          <h3 id="矩阵LU分解"><a href="#矩阵LU分解" class="headerlink" title="矩阵LU分解"></a>矩阵LU分解</h3><h4 id="矩阵-L-TDL-分解"><a href="#矩阵-L-TDL-分解" class="headerlink" title="矩阵$L^TDL$分解"></a>矩阵$L^TDL$分解</h4><p>$$A=L^TDL$$</p>
+<p>$$A=<br>\left[<br>\begin{matrix}<br>1 &amp; L_{21} &amp; L_{31}\<br>0 &amp; 1      &amp; L_{32}\<br>0 &amp; 0      &amp; 1     \<br>\end{matrix}<br>\right]<br>\left[<br>\begin{matrix}<br>D_1 &amp;     &amp;     \<br>    &amp; D_2 &amp;     \<br>    &amp;     &amp; D_3 \<br>\end{matrix}<br>\right]<br>\left[<br>\begin{matrix}<br>1       &amp; 0       &amp;  0\<br>L_{21}  &amp; 1       &amp;  0\<br>L_{31}  &amp; L_{32}  &amp;  1\<br>\end{matrix}<br>\right]<br>$$</p>
+<p>$$=<br>\left[<br>\begin{matrix}<br>D_1+L_{21}D_2L_{21}+L_{31}D_3L_{31} &amp; L_{21}D_2+L_{31}D_3L_{32} &amp; L_{31}D_3\<br>L_{21}D_2+L_{32}D_3L_{31} &amp; D_2+L_{32}D_3L_{32}   &amp; L_{32}D_3\<br>L_{31}D_3 &amp; L_{32}D_3      &amp; D_3     \<br>\end{matrix}<br>\right]<br>$$</p>
 <p>$$<br>L=<br>\left[<br>\begin{matrix}<br>1 &amp; 0 &amp; 0\<br>\end{matrix}<br>\right]<br>$$</p>
-<p>###矩阵的QR分解<br>什么矩阵能进行$QR$分解<br>A列向量无关<br>不是方阵的情况</p>
+<h3 id="矩阵的QR分解"><a href="#矩阵的QR分解" class="headerlink" title="矩阵的QR分解"></a>矩阵的QR分解</h3><p>什么矩阵能进行$QR$分解<br>A列向量线性无关<br>不是方阵的情况</p>
 <p>$A=QR$<br>$Q$是标准正交矩阵，$R$是上三角矩阵</p>
 <p>A的列向量线性无关，每个列向量可以表示成下面的线性组合方式。<br>即每个列向量可以表示成各个单位正交向量上的投影量的线性组合方式<br>$$A=<br>\left[<br>\begin{matrix}<br>u1&amp;u2&amp;u3<br>\end{matrix}<br>\right]<br>$$</p>
 <p>$QR$分解<br>$u1=(u1^Tq1)q1+(u1^Tq2)q2+(u1^Tq3)q3$<br>$u2=(u2^Tq1)q1+(u2^Tq2)q2+(u2^Tq3)q3$<br>$u3=(u3^Tq1)q1+(u3^Tq2)q2+(u3^Tq3)q3$</p>
@@ -226,7 +225,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/06/26/github+hexo%E6%90%AD%E8%BD%BD%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2020/06/26/github+hexo%E6%90%AD%E8%BD%BD%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">github+hexo搭载博客</a>
         </h2>
 
         <div class="post-meta">
@@ -238,6 +237,13 @@
 
               <time title="创建时间：2020-06-26 17:48:23" itemprop="dateCreated datePublished" datetime="2020-06-26T17:48:23+08:00">2020-06-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-28 13:51:55" itemprop="dateModified" datetime="2020-06-28T13:51:55+08:00">2020-06-28</time>
+              </span>
 
           
 
@@ -250,17 +256,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>github+hexo搭载博客<br>注册github账户<br>安装git<br>安装node.js<br>安装hexo</p>
-<p>在一个盘新建文件夹blog</p>
+          <p>首先要有：</p>
+<ul>
+<li>注册github账户</li>
+<li>安装git</li>
+<li>安装node.js</li>
+<li>安装hexo</li>
+</ul>
+<p>做完上面的工作以后，开始博客的编写和部署</p>
+<p>在任意一个盘新建文件夹blog</p>
 <ol>
 <li>hexo init</li>
 <li>hexo install</li>
 <li>npm install hexo-deployer-git –save</li>
-<li></li>
 </ol>
+<p>在用markdown编写的时候，在本地显示公式没有问题，但是部署到github上面以后公式显示有问题。</p>
 <h3 id="公式问题"><a href="#公式问题" class="headerlink" title="公式问题"></a>公式问题</h3><p>hexo+github+markdown公式不能正常显示的问题。<br>在本地预览公式能正常显示，但是把博客部署到gtihub上公式不能正常显示。</p>
 <p>尝试了几次，一直没有搞定，只能先在本地写了。<br>昨天晚上没事又捣鼓了一下，搞到凌晨两点多。发现网上有人说在next主题下能显示公式。<br>于是换成next主题。</p>
-<p>下面是步骤：<br>当然需要先搭载博客，具体参考网上，已经很多了。<br>1.换成next主题<br>这篇文章挺好<a href="https://zhuanlan.zhihu.com/p/105584373" target="_blank" rel="noopener">设置next主题</a><br>2.把next主题里面的themes/next-theme/_config.yml<br>里面的改成:</p>
+<p>下面是步骤：<br>当然需要先搭载博客，具体参考网上，已经很多了。</p>
+<ol>
+<li>换成next主题<br>这篇文章挺好<a href="https://zhuanlan.zhihu.com/p/105584373" target="_blank" rel="noopener">设置next主题</a></li>
+<li>把next主题里面的themes/next-theme/_config.yml<br>里面的改成:</li>
+</ol>
 <p>mathjax:<br>  enable: true<br>  per_page: false</p>
 <p>注意：在写矩阵的 时候，如果出现了多行的元素挤在了一行的情况。那么应该是每一行的后面是四个\</p>
 <p>####图片显示问题</p>
