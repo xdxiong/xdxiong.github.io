@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-28 12:23:48 / 修改时间：20:02:06" itemprop="dateCreated datePublished" datetime="2020-06-28T12:23:48+08:00">2020-06-28</time>
+              <time title="创建时间：2020-06-28 12:23:48 / 修改时间：20:03:21" itemprop="dateCreated datePublished" datetime="2020-06-28T12:23:48+08:00">2020-06-28</time>
             </span>
 
           
@@ -189,7 +189,7 @@
 <p>$$=<br>\left[<br>\begin{matrix}<br>D_1+L_{21}D_2L_{21}+L_{31}D_3L_{31} &amp; L_{21}D_2+L_{31}D_3L_{32} &amp; L_{31}D_3\\<br>L_{21}D_2+L_{32}D_3L_{31} &amp; D_2+L_{32}D_3L_{32}   &amp; L_{32}D_3\\<br>L_{31}D_3 &amp; L_{32}D_3      &amp; D_3     \\<br>\end{matrix}<br>\right]<br>$$</p>
 <p>$$<br>L=<br>\left[<br>\begin{matrix}<br>1 &amp; 0 &amp; 0\<br>\end{matrix}<br>\right]<br>$$</p>
 <h3 id="矩阵的QR分解"><a href="#矩阵的QR分解" class="headerlink" title="矩阵的QR分解"></a>矩阵的QR分解</h3><p>矩阵QR分解的目的：(1)求解A的特征值(2)求解A的逆(3)求解线性最小二乘问题</p>
-<h4 id="标准正交矩阵"><a href="#标准正交矩阵" class="headerlink" title="标准正交矩阵"></a>标准正交矩阵</h4><h5 id="标准正交向量-Orthonormal-Vector"><a href="#标准正交向量-Orthonormal-Vector" class="headerlink" title="标准正交向量(Orthonormal Vector)"></a>标准正交向量(Orthonormal Vector)</h5><p>$q$表示单位向量，有n个向量$q_1,q_2,q_3,…q_n$，若所有向量$q$<br>满足<br>$$<br>q^T_{i}q_{j}=<br>\left{<br>\begin{aligned}<br> 0 &amp; &amp;i\neq j \\<br>1 &amp;  &amp; i=j<br>\end{aligned}<br>\right.<br>$$</p>
+<h4 id="标准正交矩阵"><a href="#标准正交矩阵" class="headerlink" title="标准正交矩阵"></a>标准正交矩阵</h4><h5 id="标准正交向量-Orthonormal-Vector"><a href="#标准正交向量-Orthonormal-Vector" class="headerlink" title="标准正交向量(Orthonormal Vector)"></a>标准正交向量(Orthonormal Vector)</h5><p>$q$表示单位向量，有n个向量$q_1,q_2,q_3,…q_n$，若所有向量$q$<br>满足<br>$$<br>q^T_{i}q_{j}=<br>\left{<br>\begin{aligned}<br> 0 &amp; &amp;i\neq j \<br>1 &amp;  &amp; i=j<br>\end{aligned}<br>\right.<br>$$</p>
 <p>此时，我们称$q$为标准正交向量。</p>
 <h5 id="标准正交矩阵-Orthonormal-Matrix"><a href="#标准正交矩阵-Orthonormal-Matrix" class="headerlink" title="标准正交矩阵(Orthonormal Matrix)"></a>标准正交矩阵(Orthonormal Matrix)</h5><p>把标准正交向量$q$放入矩阵$Q$中，得到$Q=\left[\begin{matrix} q_1 &amp; q_2  &amp;… &amp;q_n \end{matrix}\right]$，我们称为矩阵$Q$为标准正交矩阵。</p>
 <p>$$<br>Q^TQ=<br>\left[<br>\begin{matrix}<br>q^T_1\\<br>q^T_2\\<br>\cdots\\<br>q^T_n<br>\end{matrix}<br>\right]<br>\left[<br>\begin{matrix}<br>q_1&amp;q_2&amp;\cdots &amp;q_n<br>\end{matrix}<br>\right]=<br>\left[<br>\begin{matrix}<br>1 &amp; 0 &amp; \cdots &amp; 0\\<br>0 &amp; 1 &amp; \cdots &amp; \cdots\\<br>\vdots &amp; \vdots &amp;  \ddots &amp; \vdots\\<br>0 &amp; 0 &amp; \cdots &amp; 1<br>\end{matrix}<br>\right]<br>$$</p>
