@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="####奇异值分解（SVD）Singular value decomposition 奇异值分解，简称$SVD$。SVD分解对所有矩阵都适用。这是矩阵最终也是最好的分解，任意矩阵可分解为$A&#x3D;U\Sigma V^T$，分解的结果为正交矩阵$U$，对角矩阵$\Sigma$和正交矩阵$V$. 如果矩阵$A$是正定矩阵，它的奇异值分解就是$A&#x3D;Q\Lambda Q^T$，一个正交矩阵$Q$就可以满足分解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVD分解">
+<meta property="og:url" content="http://yoursite.com/2020/06/29/SVD%E5%88%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="xiong&#39;blog">
+<meta property="og:description" content="####奇异值分解（SVD）Singular value decomposition 奇异值分解，简称$SVD$。SVD分解对所有矩阵都适用。这是矩阵最终也是最好的分解，任意矩阵可分解为$A&#x3D;U\Sigma V^T$，分解的结果为正交矩阵$U$，对角矩阵$\Sigma$和正交矩阵$V$. 如果矩阵$A$是正定矩阵，它的奇异值分解就是$A&#x3D;Q\Lambda Q^T$，一个正交矩阵$Q$就可以满足分解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/SVD%E5%88%86%E8%A7%A3/picture/svd/svd.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/29/SVD%E5%88%86%E8%A7%A3/picture/svd/svd1.png">
+<meta property="article:published_time" content="2020-06-29T14:21:48.569Z">
+<meta property="article:modified_time" content="2020-06-29T14:21:32.506Z">
+<meta property="article:author" content="xiong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/29/SVD%E5%88%86%E8%A7%A3/picture/svd/svd.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/29/SVD%E5%88%86%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>SVD分解 | xiong'blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xiong'blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/SVD%E5%88%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiong'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SVD分解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-29 22:21:48 / 修改时间：22:21:32" itemprop="dateCreated datePublished" datetime="2020-06-29T22:21:48+08:00">2020-06-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>####奇异值分解（SVD）<br>Singular value decomposition</p>
+<p>奇异值分解，简称$SVD$。SVD分解对所有矩阵都适用。这是矩阵最终也是最好的分解，任意矩阵可分解为$A=U\Sigma V^T$，分解的结果为正交矩阵$U$，对角矩阵$\Sigma$和正交矩阵$V$.</p>
+<p>如果矩阵$A$是正定矩阵，它的奇异值分解就是$A=Q\Lambda Q^T$，一个正交矩阵$Q$就可以满足分解，而不需要两个。而对于可对角话的矩阵有$A=S\Lambda S^{-1}$，但是特征向量矩阵$S$并不是正交矩阵，而SVD中的$U$和$V$都是正交矩阵。</p>
+<p><strong>实现</strong><br>    可以将矩阵$A$视为一种线性变换操作，将其行空间中的一个向量$v_1$，变为其列空间中的向量$u_1=Av_1$。奇异值分解就是要在行空间中寻找一组正交基，将其通过矩阵$A$线性变换生成列空间中的一组正交基$Av_i=\sigma_i u_i$<br><img src="picture/svd/svd.png" alt="svd"></p>
+<p>找出矩阵$A$行空间中的正交基很容易，Gram-Schmidt正交化过程就可以实现。但是随便的一组正交基经过矩阵$A$变换得到的向量并不一定正交，因此满足此要求的行空间的正交基非常特殊。而矩阵$A$零空间的向量所对应的是矩阵</p>
+<p><strong>矩阵语言实现这一过程</strong><br>    问题的核心就是找到行空间中一组特殊的正交基：<br>    $A\left[\begin{matrix}v_1&amp;v_2&amp;\cdots &amp;v_r \end<br>    {matrix} \right]=\left[\begin{matrix}\sigma-1 u_1&amp;\sigma_2 u_2&amp;\cdots &amp;\sigma_r u_r \end<br>    {matrix} \right]$<br>    $\left[\begin{matrix}u_1&amp;u_2&amp;\cdots &amp;u_r \end<br>    {matrix} \right] \left[\begin{matrix}<br>    \sigma_1&amp; &amp; &amp; \\<br>     &amp;\sigma_2&amp; &amp; \\<br>    &amp;  &amp;\ddots &amp; \\<br>    &amp; &amp; &amp;\sigma_r<br>    \end<br>    {matrix} \right]$<br>如果加入零空间的部分，等式就变成了$AV=U\Sigma$，其中零空间对应的正交基$v_{r+1},\cdots,v_n$，经过线性变换得到$Av=0$，对应$\Sigma$矩阵中对角线最后的特征值$\sigma_{r+1}=\sigma_{r+2}=\cdots=0$。<br>在等式$AV=U\Sigma$量测右乘$V^{-1}$得到$A=U\Sigma V^{-1}=U\Sigma V^T$。</p>
+<p>现在的问题就是怎么找到符号要求的向量$v_i$和$u_i$。<br>为零得到这两个正交矩阵，考虑首先解决其中一个，在等式$A=U\Sigma V^T$两侧分别乘上等式$A^T=V\Sigma^TU^T$两侧的项：<br>$$A^TA=V\Sigma^{T} U^{T} U\Sigma V^{T}<br>=V\Sigma^T \Sigma V^T$$<br>$$=V\left[ \begin{matrix}<br>\sigma^2_{1}&amp; &amp; &amp; \\<br>&amp;\sigma^2_{2}&amp;  &amp; \\<br>&amp; &amp;\ddots&amp; \\<br>&amp; &amp; &amp;\sigma^2_{r}<br>\end{matrix}\right]$$</p>
+<p>上式其实是正定矩阵$A^TA$的正交分解，$v_i$就是矩阵$A^TA$的特征向量，$\sigma^2_{i}$就是矩阵$A^TA$的特征值，奇异值$\sigma_i$要取证平方根<br>。用同样的办法也可以求的$U$，它的列向量就是矩阵$AA^T$的特征向量。</p>
+<p>例1：矩阵$A=\left[\begin{matrix}4&amp;4\\<br>-3&amp;3  \end{matrix}\right]$，求其SVD分解。<br>矩阵为可逆矩阵，秩为2，则需要在行空间中求得$v_1，v_2$，列空间中求得$u_1,u_2$，以及伸缩因子$\sigma_1,\sigma_2$。</p>
+<p>计算得$A^TA=\left[ \begin{matrix}<br>4&amp;-3\\<br>4&amp;3<br>\end{matrix} \right] \left[ \begin{matrix}<br>4&amp;4\\<br>-3&amp;3<br>\end{matrix} \right]=\left[ \begin{matrix}<br>25&amp;7\\<br>7&amp;25<br>\end{matrix} \right]$它的特征向量为<br>$\left[ \begin{matrix}<br>1\\<br>1<br>\end{matrix} \right]$和$\left[ \begin{matrix}<br>1\\<br>-1<br>\end{matrix} \right]$。标准化得到</p>
+<p>$v_1=\left[ \begin{matrix}<br>\frac{1}{\sqrt{2}}\\<br>\frac{1}{\sqrt{2}}<br>\end{matrix} \right]$</p>
+<p>$v_1=\left[ \begin{matrix}<br>\frac{1}{\sqrt{2}}\\<br>-\frac{1}{\sqrt{2}}<br>\end{matrix} \right]$<br>求得$\sigma^2_1=32$,$\sigma^2_2=8$.<br>求$U$的过程可以利用矩阵$AA^T$<br>其余步骤和求$V$相似。</p>
+<p>我们将求得的矩阵$\left[ \begin{matrix}<br>1&amp;0\\<br>0&amp;1<br>\end{matrix} \right]$作为矩阵$U$代入，会产生错误$U\Sigma V^T=\left[ \begin{matrix}<br>4&amp;4\\<br>3&amp;-3<br>\end{matrix} \right]$</p>
+<p>因为确定特征向量的过程中，特征向量反向仍然符合要求，通过现在的方法无法确认向量的符号，但是一旦我们确认$v$的方向后，$u$的方向也就随之确定，将$v$代入$AV=V\Sigma$计算$u$可以避免这种问题，$u$和$v$直接的符号联系在进行$AA^T$的计算时被切断了，而用$AV=U\Sigma$可以避免此问题。</p>
+<p>例子2：奇异矩阵$A=\left[ \begin{matrix}<br>4&amp;3\\<br>8&amp;6<br>\end{matrix} \right]$,求其SVD分解。</p>
+<p>矩阵的秩为1，行空间和列空间都为1维的。行空间和零空间可以找到一组正交基转换得到列空间和左零空间的一组正交基。<br>很容易确定$v_1=\left[ \begin{matrix}<br>0.8\\<br>0.6\<br>\end{matrix} \right]$，<br>$v_2=\left[ \begin{matrix}<br>0.6\\<br>-0.8<br>\end{matrix} \right]$，<br>$u_1=\frac{1}{\sqrt(5)}\left[ \begin{matrix}<br>1\\<br>2<br>\end{matrix} \right]$</p>
+<p>$u_2=\frac{1}{\sqrt(5)}\left[ \begin{matrix}<br>2\-1\<br>\end{matrix} \right]$</p>
+<p>$A^TA=\left[ \begin{matrix}<br>4&amp;8\\<br>3&amp;6<br>\end{matrix} \right]<br>\left[ \begin{matrix}<br>4&amp;3\\<br>8&amp;6<br>\end{matrix} \right]=<br>\left[ \begin{matrix}<br>80&amp;60\\<br>60&amp;45<br>\end{matrix} \right]$，秩1矩阵，很容易求得$\sigma^2_1=125,\sigma^2_2=0$。<br>矩阵的SVD分解为:$A=\frac{1}{\sqrt(5)}\left[ \begin{matrix}<br>1&amp;2\\<br>2&amp;-1<br>\end{matrix} \right]<br>\left[ \begin{matrix}<br>\sqrt(125)&amp;0\\<br>0&amp;0<br>\end{matrix} \right]<br>\left[ \begin{matrix}<br>0.8&amp;0.6\\<br>0.6&amp;-0.8<br>\end{matrix} \right]$</p>
+<p>做奇异值分解就是在矩阵的四个子空间中寻找到合适的基：<br>$v_1,v_2,\cdots,v_r$为行空间标准正交基。<br>$u_1,u_2,\cdots,u_r$为列空间标准正交基。<br>$v_{r+1},v_{r+2},\cdots,v_n$为零空间标准正交基。<br>$u_{r+1},u_{r+2},\cdots,u_m$为左零空间标准正交基。<br>奇异值分解在最小二乘法问题中有重要应用，因为在实际问题中常碰到矩阵$A$不是列满秩的状态，因此$A^TA$不可逆，无法用之前的方法求最优解。即使再列满秩的情况当矩阵是超大型矩阵时，$A^TA$的计算量太大，用奇异值分解的办法会降低计算量。<br><img src="picture/svd/svd1.png" alt="svd"></p>
+<p>#####奇异值分解的应用<br>奇异值分解去掉小的奇异值部分，可以减少计算量和去掉噪声</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/28/QR/" rel="prev" title="LU分解，LTDL分解，QR分解">
+      <i class="fa fa-chevron-left"></i> LU分解，LTDL分解，QR分解
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xiong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
