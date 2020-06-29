@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-29 22:21:48 / 修改时间：22:26:03" itemprop="dateCreated datePublished" datetime="2020-06-29T22:21:48+08:00">2020-06-29</time>
+              <time title="创建时间：2020-06-29 22:21:48 / 修改时间：22:33:43" itemprop="dateCreated datePublished" datetime="2020-06-29T22:21:48+08:00">2020-06-29</time>
             </span>
 
           
@@ -184,7 +184,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>####奇异值分解（SVD）<br>Singular value decomposition</p>
+          <h4 id="奇异值分解（SVD）"><a href="#奇异值分解（SVD）" class="headerlink" title="奇异值分解（SVD）"></a>奇异值分解（SVD）</h4><p>Singular value decomposition</p>
 <p>奇异值分解，简称$SVD$。SVD分解对所有矩阵都适用。这是矩阵最终也是最好的分解，任意矩阵可分解为$A=U\Sigma V^T$，分解的结果为正交矩阵$U$，对角矩阵$\Sigma$和正交矩阵$V$.</p>
 <p>如果矩阵$A$是正定矩阵，它的奇异值分解就是$A=Q\Lambda Q^T$，一个正交矩阵$Q$就可以满足分解，而不需要两个。而对于可对角话的矩阵有$A=S\Lambda S^{-1}$，但是特征向量矩阵$S$并不是正交矩阵，而SVD中的$U$和$V$都是正交矩阵。</p>
 <p><strong>实现</strong><br>    可以将矩阵$A$视为一种线性变换操作，将其行空间中的一个向量$v_1$，变为其列空间中的向量$u_1=Av_1$。奇异值分解就是要在行空间中寻找一组正交基，将其通过矩阵$A$线性变换生成列空间中的一组正交基$Av_i=\sigma_i u_i$<br><img src="images/svd.png" alt="svd"></p>
@@ -199,11 +199,11 @@
 <p>我们将求得的矩阵$\left[ \begin{matrix}<br>1&amp;0\\<br>0&amp;1<br>\end{matrix} \right]$作为矩阵$U$代入，会产生错误$U\Sigma V^T=\left[ \begin{matrix}<br>4&amp;4\\<br>3&amp;-3<br>\end{matrix} \right]$</p>
 <p>因为确定特征向量的过程中，特征向量反向仍然符合要求，通过现在的方法无法确认向量的符号，但是一旦我们确认$v$的方向后，$u$的方向也就随之确定，将$v$代入$AV=V\Sigma$计算$u$可以避免这种问题，$u$和$v$直接的符号联系在进行$AA^T$的计算时被切断了，而用$AV=U\Sigma$可以避免此问题。</p>
 <p>例子2：奇异矩阵$A=\left[ \begin{matrix}<br>4&amp;3\\<br>8&amp;6<br>\end{matrix} \right]$,求其SVD分解。</p>
-<p>矩阵的秩为1，行空间和列空间都为1维的。行空间和零空间可以找到一组正交基转换得到列空间和左零空间的一组正交基。<br>很容易确定$v_1=\left[ \begin{matrix}<br>0.8\\<br>0.6\<br>\end{matrix} \right]$，<br>$v_2=\left[ \begin{matrix}<br>0.6\\<br>-0.8<br>\end{matrix} \right]$，<br>$u_1=\frac{1}{\sqrt(5)}\left[ \begin{matrix}<br>1\\<br>2<br>\end{matrix} \right]$</p>
-<p>$u_2=\frac{1}{\sqrt(5)}\left[ \begin{matrix}<br>2\-1\<br>\end{matrix} \right]$</p>
+<p>矩阵的秩为1，行空间和列空间都为1维的。行空间和零空间可以找到一组正交基转换得到列空间和左零空间的一组正交基。<br>很容易确定$v_1=\left[ \begin{matrix}<br>0.8\\<br>0.6<br>\end{matrix} \right]$，<br>$v_2=\left[ \begin{matrix}<br>0.6\\<br>-0.8<br>\end{matrix} \right]$，<br>$u_1=\frac{1}{\sqrt(5)}\left[ \begin{matrix}<br>1\\<br>2<br>\end{matrix} \right]$</p>
+<p>$u_2=\frac{1}{\sqrt(5)}\left[ \begin{matrix}<br>2\\<br>-1<br>\end{matrix} \right]$</p>
 <p>$A^TA=\left[ \begin{matrix}<br>4&amp;8\\<br>3&amp;6<br>\end{matrix} \right]<br>\left[ \begin{matrix}<br>4&amp;3\\<br>8&amp;6<br>\end{matrix} \right]=<br>\left[ \begin{matrix}<br>80&amp;60\\<br>60&amp;45<br>\end{matrix} \right]$，秩1矩阵，很容易求得$\sigma^2_1=125,\sigma^2_2=0$。<br>矩阵的SVD分解为:$A=\frac{1}{\sqrt(5)}\left[ \begin{matrix}<br>1&amp;2\\<br>2&amp;-1<br>\end{matrix} \right]<br>\left[ \begin{matrix}<br>\sqrt(125)&amp;0\\<br>0&amp;0<br>\end{matrix} \right]<br>\left[ \begin{matrix}<br>0.8&amp;0.6\\<br>0.6&amp;-0.8<br>\end{matrix} \right]$</p>
 <p>做奇异值分解就是在矩阵的四个子空间中寻找到合适的基：<br>$v_1,v_2,\cdots,v_r$为行空间标准正交基。<br>$u_1,u_2,\cdots,u_r$为列空间标准正交基。<br>$v_{r+1},v_{r+2},\cdots,v_n$为零空间标准正交基。<br>$u_{r+1},u_{r+2},\cdots,u_m$为左零空间标准正交基。<br>奇异值分解在最小二乘法问题中有重要应用，因为在实际问题中常碰到矩阵$A$不是列满秩的状态，因此$A^TA$不可逆，无法用之前的方法求最优解。即使再列满秩的情况当矩阵是超大型矩阵时，$A^TA$的计算量太大，用奇异值分解的办法会降低计算量。<br><img src="images/svd1.png" alt="svd"></p>
-<p>#####奇异值分解的应用<br>奇异值分解去掉小的奇异值部分，可以减少计算量和去掉噪声</p>
+<h5 id="奇异值分解的应用"><a href="#奇异值分解的应用" class="headerlink" title="奇异值分解的应用"></a>奇异值分解的应用</h5><p>奇异值分解去掉小的奇异值部分，可以减少计算量和去掉噪声</p>
 
       
     </div>
