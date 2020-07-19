@@ -20,15 +20,19 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xiong&#39;blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="RTKLIB  卡尔曼滤波中的Q阵，R阵，P阵Q阵是处理噪声阵，参数给出的初始噪声认为是在ENU坐标下。要转换到ECEF坐标系下才可以。 测量噪声阵R 参数方差协方差阵，对应的是在ECEF下，输出结果一般是ENU下的中误差。位置的，速度的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RTKLIB_QRP">
+<meta property="og:url" content="http://yoursite.com/2020/07/02/RTKLIB_QRP/index.html">
 <meta property="og:site_name" content="xiong&#39;blog">
+<meta property="og:description" content="RTKLIB  卡尔曼滤波中的Q阵，R阵，P阵Q阵是处理噪声阵，参数给出的初始噪声认为是在ENU坐标下。要转换到ECEF坐标系下才可以。 测量噪声阵R 参数方差协方差阵，对应的是在ECEF下，输出结果一般是ENU下的中误差。位置的，速度的。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-01T16:01:24.501Z">
+<meta property="article:modified_time" content="2020-07-01T16:01:25.941Z">
 <meta property="article:author" content="xiong">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/archives/2020/">
+<link rel="canonical" href="http://yoursite.com/2020/07/02/RTKLIB_QRP/">
 
 
 <script id="page-configurations">
@@ -36,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | xiong'blog</title>
+  <title>RTKLIB_QRP | xiong'blog</title>
   
 
 
@@ -139,210 +143,82 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 9 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/02/RTKLIB_QRP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiong'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RTKLIB_QRP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-02 00:01:24 / 修改时间：00:01:25" itemprop="dateCreated datePublished" datetime="2020-07-02T00:01:24+08:00">2020-07-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-19T18:02:50+08:00"
-              content="2020-07-19">
-          07-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/19/linux%E5%AD%A6%E4%B9%A0/" itemprop="url">
-            <span itemprop="name">linux学习</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-05T22:56:52+08:00"
-              content="2020-07-05">
-          07-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/05/GNSS_measures_combinations/" itemprop="url">
-            <span itemprop="name">GNSS_measures_combinations</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-02T00:01:24+08:00"
-              content="2020-07-02">
-          07-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/02/RTKLIB_QRP/" itemprop="url">
-            <span itemprop="name">RTKLIB_QRP</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-29T22:42:22+08:00"
-              content="2020-06-29">
-          06-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/29/RTKLIB%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/" itemprop="url">
-            <span itemprop="name">RTKLIB中的matmul()函数</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-29T22:21:48+08:00"
-              content="2020-06-29">
-          06-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/29/SVD%E5%88%86%E8%A7%A3/" itemprop="url">
-            <span itemprop="name">SVD分解</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-28T12:23:48+08:00"
-              content="2020-06-28">
-          06-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/28/QR/" itemprop="url">
-            <span itemprop="name">LU分解，LTDL分解，QR分解</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-26T17:48:23+08:00"
-              content="2020-06-26">
-          06-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/26/github+hexo%E6%90%AD%E8%BD%BD%E5%8D%9A%E5%AE%A2/" itemprop="url">
-            <span itemprop="name">github+hexo搭载博客</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-25T18:20:57+08:00"
-              content="2020-06-25">
-          06-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/25/%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" itemprop="url">
-            <span itemprop="name">路径问题</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-24T19:37:46+08:00"
-              content="2020-06-24">
-          06-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/24/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h4 id="RTKLIB-卡尔曼滤波中的Q阵，R阵，P阵"><a href="#RTKLIB-卡尔曼滤波中的Q阵，R阵，P阵" class="headerlink" title="RTKLIB  卡尔曼滤波中的Q阵，R阵，P阵"></a>RTKLIB  卡尔曼滤波中的Q阵，R阵，P阵</h4><p>Q阵是处理噪声阵，参数给出的初始噪声认为是在ENU坐标下。<br>要转换到ECEF坐标系下才可以。</p>
+<p>测量噪声阵R</p>
+<p>参数方差协方差阵，对应的是在ECEF下，输出结果一般是ENU下的中误差。位置的，速度的。</p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/29/RTKLIB%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/" rel="prev" title="RTKLIB中的matmul()函数">
+      <i class="fa fa-chevron-left"></i> RTKLIB中的matmul()函数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/05/GNSS_measures_combinations/" rel="next" title="GNSS_measures_combinations">
+      GNSS_measures_combinations <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -395,6 +271,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#RTKLIB-卡尔曼滤波中的Q阵，R阵，P阵"><span class="nav-number">1.</span> <span class="nav-text">RTKLIB  卡尔曼滤波中的Q阵，R阵，P阵</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

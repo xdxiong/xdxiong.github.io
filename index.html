@@ -145,6 +145,341 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/19/linux%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiong'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/19/linux%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">linux学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-19 18:02:50 / 修改时间：22:53:09" itemprop="dateCreated datePublished" datetime="2020-07-19T18:02:50+08:00">2020-07-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="linux学习"><a href="#linux学习" class="headerlink" title="linux学习"></a>linux学习</h4><h5 id="linux终端命令格式"><a href="#linux终端命令格式" class="headerlink" title="linux终端命令格式"></a>linux终端命令格式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command [-opttions] [parameter]</span><br></pre></td></tr></table></figure>
+<h6 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h6><ul>
+<li>command :命令名，相应功能的英文单纯或单词的缩写</li>
+<li>[-options]: 选项，可用来对命令进行控制，也可以省略</li>
+<li>parameter: 传给命令的参数，可以是另个，一个，或者多个<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[] 代表可选</span><br></pre></td></tr></table></figure>
+<h5 id="查阅命令帮助信息"><a href="#查阅命令帮助信息" class="headerlink" title="查阅命令帮助信息"></a>查阅命令帮助信息</h5></li>
+</ul>
+<ol>
+<li>–help<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command --help</span><br></pre></td></tr></table></figure>
+<h6 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h6></li>
+</ol>
+<ul>
+<li>显示command命令的帮助信息</li>
+</ul>
+<ol start="2">
+<li>man<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man command</span><br></pre></td></tr></table></figure>
+使用man时操作键<table>
+<thead>
+<tr>
+<th>操作键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格键</td>
+<td>显示手册页的下一屏</td>
+</tr>
+<tr>
+<td>Enter键</td>
+<td>一次滚动手册页的一行</td>
+</tr>
+<tr>
+<td>b</td>
+<td>回滚一屏</td>
+</tr>
+<tr>
+<td>f</td>
+<td>前滚一屏</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>/word</td>
+<td>搜索word字符串</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h5 id="查看目录内容"><a href="#查看目录内容" class="headerlink" title="查看目录内容"></a>查看目录内容</h5><ol>
+<li>终端实用技巧</li>
+</ol>
+<ul>
+<li>自动补全：<br>在敲出”文件/目录 /命令前的几个字母后，按下tab键。如果输入的没有歧义，系统会自动补全，如果还存在其他 “文件/目录/命令 “，再按一下tab键(两次)，系统会提示可能存在的命令。</li>
+<li>使用过的命令：<br>按”上/下”光标可以在曾经使用过的命令之间来回切换<br>如果想退出，按ctrl+c</li>
+<li>.代表当前目录</li>
+<li>..代表上一级目录</li>
+</ul>
+<ol start="2">
+<li>ls命令说明</li>
+</ol>
+<p>Linux下文件和目录特点</p>
+<ul>
+<li>Linux文件或者目录名最长可以有 256个字符</li>
+<li>以. 开头 的文件为隐藏文件，需要用-a 才能显示</li>
+<li>.代表当前目录</li>
+<li>..代表上一级目录(cd .. 可能到上一级目录)</li>
+</ul>
+<ol start="3">
+<li>ls常用选项</li>
+</ol>
+<p>-a 显示指定目录下所有子文件夹<br>-l 以列表的方式显示文件的详细信息<br>-h 配合-l以人性化显示文件大小</p>
+<p>选项可以在一起用(例如ls -lha)</p>
+<ol start="4">
+<li>通配符的使用</li>
+</ol>
+<p><em>星号 代表任意个数个字符<br>    ls 1</em>.txt  表示1开头的文件<br>    ls 1<em>3.txt 表示以1开头3结尾的文件<br>    ls *.</em>      表示所有文件<br>? 代表任意一个字符，至少一个<br>    ls ?2?.txt 表示中间是2的字符<br>[] 表示可以匹配字符组中的任一一个</p>
+<p>[abc] 匹配a,b,c中的任意一个<br>    ls [1234]23.txt<br>[a-f] 匹配从a到f范围内任意的一个字符<br>    ls [1-4]23.txt</p>
+<h5 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h5><ol>
+<li>cd ,改变当前工作目录，也是用户最常用的命令之一。linux中所有的目录和文件大小写是敏感的</li>
+</ol>
+<p>cd  切换当前用户的主目录(/home/用户名)<br>cd ~ 切换到当前用户的主目录(/home/用户目录)<br>cd . 保持当前用户的主目录<br>cd .. 切换到上级目录<br>cd- 可以在最近两个工作目录之间来回切换</p>
+<ol start="2">
+<li>相对路径和绝对路径</li>
+</ol>
+<ul>
+<li>绝对路径 输入绝对路径，最前面是/或者~，表示相对当前目录所在目录位置 cd /home/xdx/Desktop</li>
+<li>相对路径 最前面不是/或者~，表示当前目录所在的目录位置 cd Desktop/</li>
+</ul>
+<ol start="3">
+<li>创建和删除操作</li>
+</ol>
+<ul>
+<li>创建文件或修改文件时间<br>  如果文件不存在，可以创建一个空白文件<br>  如果文件存在，可以修改 文件的末次修改日期</li>
+<li>mkdir<br>  创建一个新的目录<br>  -p可以递归创建目录(mkdir -p a1/b1/c1/d1)<br>  注意，新疆目录的名称不能与当前目录中已有的目录或文件同名</li>
+<li>rm<br>  删除文件或目录(使用rm要小心，文件不能恢复)<br>  -f 强制删除，忽略不存在的文件，无需提示<br>  -r 递归删除目录下的内容，删除文件夹时必须加此参数<br>  rm 也可以加通配符(rm *1.txt，删除以1结尾的txt)<h5 id="拷贝和复制"><a href="#拷贝和复制" class="headerlink" title="拷贝和复制"></a>拷贝和复制</h5></li>
+</ul>
+<ol>
+<li><p>tree<br> tree ~ 显示家目录下的文件<br> -d 只显示目录</p>
+</li>
+<li><p>cp命令<br> cp命令的功能是讲给出的文件或者目录复制到另一个文件或者目录中。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp 源文件 目标文件</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ~&#x2F;Documents&#x2F;readme.txt . 复制到当前目录</span><br></pre></td></tr></table></figure>
+
+<p> -f 已经存在的目标文件直接覆盖，不会提示<br> -i 覆盖文件前提示<br> -r 若给出的源文件是目录文件，则cp<br> 将递归复制目录下的所有子目录和文件，目标文件必须为一个目录名</p>
+</li>
+<li><p>mv</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 源文件 目标文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv aa ~  移动到家目录</span><br></pre></td></tr></table></figure>
+<p>移动过程中可以重命名</p>
+<h5 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h5><ol>
+<li>cat<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">car 123.txt</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>-b 对非空输出编号<br>-n 对输出的所有行编号<br>linux还有一个命令nl和cat 一样</p>
+<ol start="2">
+<li>more<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more 123.txt</span><br></pre></td></tr></table></figure>
+内容比较多</li>
+</ol>
+<p>空格键  显示手册页的下一屏<br>Enter键 一次滚动手册页的一行<br>b        回滚一屏<br>f        前滚一屏<br>q        退出<br>/word    搜索word字符串</p>
+<ol start="3">
+<li>grep</li>
+</ol>
+<ul>
+<li>linux 系统中grep命令是一种强大的文本搜索工具<br>grep允许对文本文件进行模式查找，所谓模式查找，又称为正则表达式</li>
+</ul>
+<p>-n 显示匹配行以及行号<br>-v 显示不包含匹配文本的所有行<br>-i 忽略大小写</p>
+<p>如果搜索的字符直接有空格，用“”括起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i &quot;hello world&quot; 123.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>^a 行首，搜寻以a开头的行</li>
+<li>ke$ 行尾，搜寻以ke结束的行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -n ^a 123.txt  查找以a开头的行  ，并显示行号</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/GNSS_measures_combinations/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiong'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/05/GNSS_measures_combinations/" class="post-title-link" itemprop="url">GNSS_measures_combinations</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-05 22:56:52 / 修改时间：22:56:53" itemprop="dateCreated datePublished" datetime="2020-07-05T22:56:52+08:00">2020-07-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="GNSS组合测量模型"><a href="#GNSS组合测量模型" class="headerlink" title="GNSS组合测量模型"></a>GNSS组合测量模型</h4><p>对应频率$f_1$和$f_2$的测量值$R_{pi}$和$\Phi_{Li}$ $i=1,2$。</p>
+<h5 id="无电离层组合-Ionosphere-free-combination"><a href="#无电离层组合-Ionosphere-free-combination" class="headerlink" title="无电离层组合(Ionosphere-free combination)"></a>无电离层组合(Ionosphere-free combination)</h5><p>消除了一阶电离层影响</p>
+<p>$$\Phi_{LC}=\frac{f^2_1\Phi_{L1}-f^2_2\Phi_{L2}}{f^2_1-f^2_2}$$</p>
+<p>$$R_{LC}=\frac{f^2_1\Phi_{L1}-f^2_2\Phi_{L2}}{f^2_1-f^2_2}$$</p>
+<p>卫星钟定义根据$R_{PC}$组合</p>
+<h5 id="无距离-组合-Geometry-free-combination"><a href="#无距离-组合-Geometry-free-combination" class="headerlink" title="无距离 组合(Geometry-free combination)"></a>无距离 组合(Geometry-free combination)</h5><p>消除了测量的几何部分，除测量噪声和多路径外，留下与频率相关的影响(电离层折射，硬件延迟，相位缠绕)。他能估计电离层电子含量，监测载波相位中的周跳，也能估计天线旋转。<br>注意$R_{pI}$和$\Phi_{LI}$ 术语顺序变换化。</p>
+<p>$$\Phi_{LI}=\Phi_{L1}-\Phi_{L2}$$<br>$$R_{PI}=R_{P2}-R_{P1}$$</p>
+<h4 id="宽巷组合-Wide-laning-combinations"><a href="#宽巷组合-Wide-laning-combinations" class="headerlink" title="宽巷组合(Wide-laning combinations)"></a>宽巷组合(Wide-laning combinations)</h4><p>These combinations are used to create a signal with a significantly wide wavelength. This longer wavelength is useful for cycle-slips detection and ambiguity fixing. Other feature of this combination is the change of the sign in the ionospheric term, which is exploited by the Melbourne-Wübbena combination to remove the ionospheric refraction.</p>
+<p>$$\Phi_{LW}=\frac{f_1\Phi_{L1}-f_2\Phi_{L2}}{f_1-f_2}$$</p>
+<p>$$R_{PW}=\frac{f_1R_{P1}-f_2R_{P2}}{f_1-f_2}$$</p>
+<h5 id="窄巷组合-Narrow-laning-combinations"><a href="#窄巷组合-Narrow-laning-combinations" class="headerlink" title="窄巷组合(Narrow-laning combinations)"></a>窄巷组合(Narrow-laning combinations)</h5><p>These combinations create signals with a narrow wavelength. The signal in this combination has a lower noise than each separated component. It is used to reduce the code noise in the Melbourne-Wübbena combination to estimate the wide-lane ambiguity.</p>
+<p>$$\Phi_{LN}=\frac{f_1\Phi_{L1}+f_2\Phi_{L2}}{f_1+f_2}$$</p>
+<p>$$R_{PN}=\frac{f_1R_{P1}+f_2R_{P2}}{f_1+f_2}$$</p>
+<h5 id="参考：https-gssc-esa-int-navipedia-index-php-Combination-of-GNSS-Measurements"><a href="#参考：https-gssc-esa-int-navipedia-index-php-Combination-of-GNSS-Measurements" class="headerlink" title="参考：https://gssc.esa.int/navipedia/index.php/Combination_of_GNSS_Measurements"></a>参考：<a href="https://gssc.esa.int/navipedia/index.php/Combination_of_GNSS_Measurements" target="_blank" rel="noopener">https://gssc.esa.int/navipedia/index.php/Combination_of_GNSS_Measurements</a></h5>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/02/RTKLIB_QRP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiong'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/02/RTKLIB_QRP/" class="post-title-link" itemprop="url">RTKLIB_QRP</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-02 00:01:24 / 修改时间：00:01:25" itemprop="dateCreated datePublished" datetime="2020-07-02T00:01:24+08:00">2020-07-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="RTKLIB-卡尔曼滤波中的Q阵，R阵，P阵"><a href="#RTKLIB-卡尔曼滤波中的Q阵，R阵，P阵" class="headerlink" title="RTKLIB  卡尔曼滤波中的Q阵，R阵，P阵"></a>RTKLIB  卡尔曼滤波中的Q阵，R阵，P阵</h4><p>Q阵是处理噪声阵，参数给出的初始噪声认为是在ENU坐标下。<br>要转换到ECEF坐标系下才可以。</p>
+<p>测量噪声阵R</p>
+<p>参数方差协方差阵，对应的是在ECEF下，输出结果一般是ENU下的中误差。位置的，速度的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/RTKLIB%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -528,7 +863,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-26 17:47:43" itemprop="dateModified" datetime="2020-06-26T17:47:43+08:00">2020-06-26</time>
+                <time title="修改时间：2020-07-05 10:37:29" itemprop="dateModified" datetime="2020-07-05T10:37:29+08:00">2020-07-05</time>
               </span>
 
           
@@ -548,7 +883,7 @@
 <li>/是根目录。  跟目录指逻辑驱动器最上级目录，它是相对子目录来说的。例如打开”我的电脑”，双击C盘就进入C盘的跟目录。</li>
 <li>../../ 上上级目录</li>
 </ol>
-
+<h4 id="windows下lib和dll"><a href="#windows下lib和dll" class="headerlink" title="windows下lib和dll"></a>windows下lib和dll</h4>
       
     </div>
 
@@ -699,7 +1034,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="matmul()函数这里的函数要求 矩阵是是按照列排列，例如一个2行3列的矩阵 ，A&#x3D;[1 2 3;                        4 5 6] 实际储存的时候A&#x3D;[1 ,4, 2,5,3,6]; 得到的矩阵也是按照列进行排列的。n代表A矩阵的行，m代表A矩阵的列k代表B矩阵的列 A*B&#x3D;C 123456789101112131415161718192021222324&#x2F;">
+  <meta name="description" content="GNSS组合测量模型对应频率$f_1$和$f_2$的测量值$R_{pi}$和$\Phi_{Li}$ $i&#x3D;1,2$。 无电离层组合(Ionosphere-free combination)消除了一阶电离层影响 $$\Phi_{LC}&#x3D;\frac{f^2_1\Phi_{L1}-f^2_2\Phi_{L2}}{f^2_1-f^2_2}$$ $$R_{LC}&#x3D;\frac{f^2_1\Phi_{L1}-f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RTKLIB中的matmul()函数">
-<meta property="og:url" content="http://yoursite.com/2020/06/29/RTKLIB%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/index.html">
+<meta property="og:title" content="GNSS_measures_combinations">
+<meta property="og:url" content="http://yoursite.com/2020/07/05/GNSS_measures_combinations/index.html">
 <meta property="og:site_name" content="xiong&#39;blog">
-<meta property="og:description" content="matmul()函数这里的函数要求 矩阵是是按照列排列，例如一个2行3列的矩阵 ，A&#x3D;[1 2 3;                        4 5 6] 实际储存的时候A&#x3D;[1 ,4, 2,5,3,6]; 得到的矩阵也是按照列进行排列的。n代表A矩阵的行，m代表A矩阵的列k代表B矩阵的列 A*B&#x3D;C 123456789101112131415161718192021222324&#x2F;">
+<meta property="og:description" content="GNSS组合测量模型对应频率$f_1$和$f_2$的测量值$R_{pi}$和$\Phi_{Li}$ $i&#x3D;1,2$。 无电离层组合(Ionosphere-free combination)消除了一阶电离层影响 $$\Phi_{LC}&#x3D;\frac{f^2_1\Phi_{L1}-f^2_2\Phi_{L2}}{f^2_1-f^2_2}$$ $$R_{LC}&#x3D;\frac{f^2_1\Phi_{L1}-f">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-29T14:42:22.911Z">
-<meta property="article:modified_time" content="2020-06-29T14:57:53.385Z">
+<meta property="article:published_time" content="2020-07-05T14:56:52.705Z">
+<meta property="article:modified_time" content="2020-07-05T14:56:53.224Z">
 <meta property="article:author" content="xiong">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/29/RTKLIB%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/">
+<link rel="canonical" href="http://yoursite.com/2020/07/05/GNSS_measures_combinations/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>RTKLIB中的matmul()函数 | xiong'blog</title>
+  <title>GNSS_measures_combinations | xiong'blog</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/RTKLIB%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/GNSS_measures_combinations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          RTKLIB中的matmul()函数
+          GNSS_measures_combinations
         </h1>
 
         <div class="post-meta">
@@ -174,7 +174,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-29 22:42:22 / 修改时间：22:57:53" itemprop="dateCreated datePublished" datetime="2020-06-29T22:42:22+08:00">2020-06-29</time>
+              <time title="创建时间：2020-07-05 22:56:52 / 修改时间：22:56:53" itemprop="dateCreated datePublished" datetime="2020-07-05T22:56:52+08:00">2020-07-05</time>
             </span>
 
           
@@ -188,12 +188,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h5 id="matmul-函数"><a href="#matmul-函数" class="headerlink" title="matmul()函数"></a>matmul()函数</h5><p>这里的函数要求 矩阵是是按照列排列，<br>例如一个2行3列的矩阵 ，A=[1 2 3;<br>                        4 5 6]</p>
-<p>实际储存的时候A=[1 ,4, 2,5,3,6];</p>
-<p>得到的矩阵也是按照列进行排列的。<br>n代表A矩阵的行，m代表A矩阵的列<br>k代表B矩阵的列</p>
-<p>A*B=C</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* multiply matrix -----------------------------------------------------------*&#x2F;</span><br><span class="line">extern void matmul(const char *tr, int n, int k, int m, double alpha,</span><br><span class="line">	const double *A, const double *B, double beta, double *C)</span><br><span class="line">&#123;</span><br><span class="line">	double d;</span><br><span class="line">	int i, j, x, f &#x3D; tr[0] &#x3D;&#x3D; &#39;N&#39; ? (tr[1] &#x3D;&#x3D; &#39;N&#39; ? 1 : 2) : (tr[1] &#x3D;&#x3D; &#39;N&#39; ? 3 : 4);</span><br><span class="line"></span><br><span class="line">	for (i &#x3D; 0; i&lt;n; i++) for (j &#x3D; 0; j&lt;k; j++) &#123;</span><br><span class="line">		d &#x3D; 0.0;</span><br><span class="line">		switch (f) &#123;</span><br><span class="line">		case 1: for (x &#x3D; 0; x &lt; m; x++)&#123;</span><br><span class="line">					d +&#x3D; A[i + x*n] * B[x + j*m];</span><br><span class="line">					printf(&quot;%lf\n&quot;, A[i + x*n]);</span><br><span class="line">					printf(&quot;%lf\n&quot;, B[i + x*n]);</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">			break;</span><br><span class="line">		case 2: for (x &#x3D; 0; x&lt;m; x++) d +&#x3D; A[i + x*n] * B[j + x*k]; break;</span><br><span class="line">		case 3: for (x &#x3D; 0; x&lt;m; x++) d +&#x3D; A[x + i*m] * B[x + j*m]; break;</span><br><span class="line">		case 4: for (x &#x3D; 0; x&lt;m; x++) d +&#x3D; A[x + i*m] * B[j + x*k]; break;</span><br><span class="line">		&#125;</span><br><span class="line">		if (beta &#x3D;&#x3D; 0.0) C[i + j*n] &#x3D; alpha*d; else C[i + j*n] &#x3D; alpha*d + beta*C[i + j*n];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h4 id="GNSS组合测量模型"><a href="#GNSS组合测量模型" class="headerlink" title="GNSS组合测量模型"></a>GNSS组合测量模型</h4><p>对应频率$f_1$和$f_2$的测量值$R_{pi}$和$\Phi_{Li}$ $i=1,2$。</p>
+<h5 id="无电离层组合-Ionosphere-free-combination"><a href="#无电离层组合-Ionosphere-free-combination" class="headerlink" title="无电离层组合(Ionosphere-free combination)"></a>无电离层组合(Ionosphere-free combination)</h5><p>消除了一阶电离层影响</p>
+<p>$$\Phi_{LC}=\frac{f^2_1\Phi_{L1}-f^2_2\Phi_{L2}}{f^2_1-f^2_2}$$</p>
+<p>$$R_{LC}=\frac{f^2_1\Phi_{L1}-f^2_2\Phi_{L2}}{f^2_1-f^2_2}$$</p>
+<p>卫星钟定义根据$R_{PC}$组合</p>
+<h5 id="无距离-组合-Geometry-free-combination"><a href="#无距离-组合-Geometry-free-combination" class="headerlink" title="无距离 组合(Geometry-free combination)"></a>无距离 组合(Geometry-free combination)</h5><p>消除了测量的几何部分，除测量噪声和多路径外，留下与频率相关的影响(电离层折射，硬件延迟，相位缠绕)。他能估计电离层电子含量，监测载波相位中的周跳，也能估计天线旋转。<br>注意$R_{pI}$和$\Phi_{LI}$ 术语顺序变换化。</p>
+<p>$$\Phi_{LI}=\Phi_{L1}-\Phi_{L2}$$<br>$$R_{PI}=R_{P2}-R_{P1}$$</p>
+<h4 id="宽巷组合-Wide-laning-combinations"><a href="#宽巷组合-Wide-laning-combinations" class="headerlink" title="宽巷组合(Wide-laning combinations)"></a>宽巷组合(Wide-laning combinations)</h4><p>These combinations are used to create a signal with a significantly wide wavelength. This longer wavelength is useful for cycle-slips detection and ambiguity fixing. Other feature of this combination is the change of the sign in the ionospheric term, which is exploited by the Melbourne-Wübbena combination to remove the ionospheric refraction.</p>
+<p>$$\Phi_{LW}=\frac{f_1\Phi_{L1}-f_2\Phi_{L2}}{f_1-f_2}$$</p>
+<p>$$R_{PW}=\frac{f_1R_{P1}-f_2R_{P2}}{f_1-f_2}$$</p>
+<h5 id="窄巷组合-Narrow-laning-combinations"><a href="#窄巷组合-Narrow-laning-combinations" class="headerlink" title="窄巷组合(Narrow-laning combinations)"></a>窄巷组合(Narrow-laning combinations)</h5><p>These combinations create signals with a narrow wavelength. The signal in this combination has a lower noise than each separated component. It is used to reduce the code noise in the Melbourne-Wübbena combination to estimate the wide-lane ambiguity.</p>
+<p>$$\Phi_{LN}=\frac{f_1\Phi_{L1}+f_2\Phi_{L2}}{f_1+f_2}$$</p>
+<p>$$R_{PN}=\frac{f_1R_{P1}+f_2R_{P2}}{f_1+f_2}$$</p>
+<h5 id="参考：https-gssc-esa-int-navipedia-index-php-Combination-of-GNSS-Measurements"><a href="#参考：https-gssc-esa-int-navipedia-index-php-Combination-of-GNSS-Measurements" class="headerlink" title="参考：https://gssc.esa.int/navipedia/index.php/Combination_of_GNSS_Measurements"></a>参考：<a href="https://gssc.esa.int/navipedia/index.php/Combination_of_GNSS_Measurements" target="_blank" rel="noopener">https://gssc.esa.int/navipedia/index.php/Combination_of_GNSS_Measurements</a></h5>
     </div>
 
     
@@ -208,12 +216,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/29/SVD%E5%88%86%E8%A7%A3/" rel="prev" title="SVD分解">
-      <i class="fa fa-chevron-left"></i> SVD分解
+    <a href="/2020/07/02/RTKLIB_QRP/" rel="prev" title="RTKLIB_QRP">
+      <i class="fa fa-chevron-left"></i> RTKLIB_QRP
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/07/02/RTKLIB_QRP/" rel="next" title="RTKLIB_QRP">
-      RTKLIB_QRP <i class="fa fa-chevron-right"></i>
+    <a href="/2020/07/19/linux%E5%AD%A6%E4%B9%A0/" rel="next" title="linux学习">
+      linux学习 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -273,7 +281,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#matmul-函数"><span class="nav-number">1.</span> <span class="nav-text">matmul()函数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#GNSS组合测量模型"><span class="nav-number">1.</span> <span class="nav-text">GNSS组合测量模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#无电离层组合-Ionosphere-free-combination"><span class="nav-number">1.1.</span> <span class="nav-text">无电离层组合(Ionosphere-free combination)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#无距离-组合-Geometry-free-combination"><span class="nav-number">1.2.</span> <span class="nav-text">无距离 组合(Geometry-free combination)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宽巷组合-Wide-laning-combinations"><span class="nav-number">2.</span> <span class="nav-text">宽巷组合(Wide-laning combinations)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#窄巷组合-Narrow-laning-combinations"><span class="nav-number">2.1.</span> <span class="nav-text">窄巷组合(Narrow-laning combinations)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考：https-gssc-esa-int-navipedia-index-php-Combination-of-GNSS-Measurements"><span class="nav-number">2.2.</span> <span class="nav-text">参考：https:&#x2F;&#x2F;gssc.esa.int&#x2F;navipedia&#x2F;index.php&#x2F;Combination_of_GNSS_Measurements</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
